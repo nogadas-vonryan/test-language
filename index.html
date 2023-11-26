@@ -459,6 +459,7 @@ class Interpreter{
   else if(statement == 'pick'){
    let value = prompt('Enter a value: ');
    let key = body.getIdentifier();
+   if(key[0] == '$') key = key.substring(1);
    body.environment[key] = value;
   }
   else if(statement == 'oc'){

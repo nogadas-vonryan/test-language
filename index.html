@@ -56,7 +56,7 @@ function clear_output(){
 }
 
 let OPERATORS = ['+','-','*','/','%','=','(',
-                 ')','\"'];
+                 ')','\"','<','>'];
 
 
 
@@ -270,6 +270,21 @@ class Interpreter{
  }
  
  
+ set_variable(body,key,value,scope){
+  if(key == '') return 'NULL';
+  if(key[0] == '$') key = key.substring(1);
+  
+  let iterator = body;
+  if(scope == 'global'){
+   while(iterator.parent){
+    iterator = iterator.parent;
+   }
+  }
+  iterator.environment[key] = value;
+  
+ }
+ 
+ 
  parse_factor(body){
   let value = 0;
   body.eatWhiteSpaces();
@@ -415,22 +430,33 @@ class Interpreter{
   body.eatWhiteSpaces();
   
   //declare
-  if(body.buffer[0] == '$'){
+  if(body.peekIdentifier() == 'global' ||
+     body.buffer[0] == '$'){
+   let scope = 'local';
+   if(body.peekIdentifier() == 'global'){
+    scope = 'global';
+    body.getIdentifier();
+   }
+   
+   body.eatWhiteSpaces();
    this.strict_match(body,'$');
    body.eatWhiteSpaces();
    let key = body.getIdentifier();
    body.eatWhiteSpaces();
    this.strict_match(body,'=');
    body.eatWhiteSpaces();
-   if(body.isNumber(body.buffer[0]))
-    body.environment[key] = this.parse_logic(body);
+   if(body.isNumber(body.buffer[0]) ||
+      body.buffer[0] == '$'){
+    let value = this.parse_logic(body);
+    this.set_variable(body,key,value,scope);
+      }
    else{
     console.log(body)
     this.strict_match(body,'"');
     let value = body.getString();
     this.strict_match(body,'"');
     console.log('val:'+value,body)
-    body.environment[key] = value;
+    this.set_variable(body,key,value,scope);
    }
    return;
   }
@@ -484,6 +510,7 @@ class Interpreter{
    this.strict_match(body,'(');
    let condition = this.parse_logic(body);
    this.strict_match(body,')');
+   console.log(condition)
    if(body.getIdentifier() != '👋👋')
     error('Error: expected 👋👋');
    let new_body = new Body(body);
@@ -514,7 +541,10 @@ class Interpreter{
    let new_body = new Body(body);
    new_body.buffer = body.getBody();
    this.parse_all_statements(new_body);
-  }
+  }/*
+  else if(statement == '👋👋👋'){
+   body.interrupt = true;
+  }*/
   else{
    console.log('st:' + statement)
    this.error('Error: Unknown statement');

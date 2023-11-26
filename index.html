@@ -381,14 +381,14 @@ class Interpreter{
  
  
  parse_logic(body){
-  let value = this.parse_expression(body);
+  let value = this.parse_relation(body);
   body.eatWhiteSpaces();
   
   while(body.buffer.length > 0){
    if(body.buffer.substring(0,2) == '||'){
     this.strict_match(body,'|');
     this.strict_match(body,'|');
-    let second_value = this.parse_expression(body);
+    let second_value = this.parse_relation(body);
     if(value || second_value) value = 1;
     else value = 0;
     
@@ -396,7 +396,7 @@ class Interpreter{
    else if(body.buffer.substring(0,2) == '&&'){
     this.strict_match(body,'&');
     this.strict_match(body,'&');
-    let second_value = this.parse_expression(body);
+    let second_value = this.parse_relation(body);
     if(value && second_value) value = 1;
     else value = 0;
     

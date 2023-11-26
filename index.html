@@ -305,6 +305,7 @@ class Interpreter{
   }
   else{
    let key = body.getIdentifier();
+   body.eatWhiteSpaces();
    value = parseFloat(this.get_variable(body,key));
   }
   

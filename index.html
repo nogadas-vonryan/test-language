@@ -518,7 +518,7 @@ class Interpreter{
    new_body.buffer = body.getBody();
    
    if(condition){
-    this.parse_statement(new_body);
+    this.parse_all_statements(new_body);
    }
   }
   else if(statement == 'si'){

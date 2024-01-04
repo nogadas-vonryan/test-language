@@ -2,7 +2,7 @@
 
 ---
 
-A simple recursive descent (LL1) interpreter for a weird language. You can mess around with it [here](https://vrcxz.github.io/test-language/). Supports parsing of basic mathematical expressions (MDAS) and logical operators. 
+A simple recursive descent (LL1) interpreter for a weird language. You can mess around with it [here](https://vrcxz.github.io/test-language/). Supports parsing of basic mathematical expressions (MDAS), relation and logical operators. 
 
 Example code [here](https://github.com/vrcxz/test-language/blob/main/guessing_game.weird).
 

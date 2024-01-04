@@ -1,0 +1,30 @@
+
+fry "Lets play a Guessing Game:" br br
+fry "I'll choose a number and then you'll try guess what it is." br
+
+$number = random
+$input = 0
+
+prompt fry "Ok, I already picked one. Try to guess it." br br
+
+si(20) 👋👋
+
+pick $input
+
+oc($input == $number) 👋👋
+ clear
+ prompt fry "That's right! Well done!" br
+ stahp
+👋👋👋
+
+oc($input > $number) 👋👋
+ clear
+ prompt fry "Try to pick a little lower..." br
+👋👋👋
+
+oc($input < $number) 👋👋
+ clear
+ prompt fry "Try to pick a little higher..." br
+👋👋👋
+
+👋👋👋

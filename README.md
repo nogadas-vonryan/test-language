@@ -18,14 +18,14 @@ Example code [here](https://github.com/vrcxz/test-language/blob/main/guessing_ga
 
 `pick var` = prompts for input
 
-`oc(condition)` = if statement
+`👋👋 code 👋👋👋` = defines a scope
 
-`si(count)` = loop
+`oc(condition) 👋👋 code  👋👋👋` = if statement
+
+`si(count)  👋👋 code 👋👋👋` = loop
 
 `stahp` = breaks loop
 
 `br` = prints newline
 
 `clear` = clears output
-
-`👋👋 code 👋👋👋` = defines a scope

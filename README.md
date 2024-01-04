@@ -22,6 +22,8 @@ Example code [here](https://github.com/vrcxz/test-language/blob/main/guessing_ga
 
 `si(count)` = loop
 
+`stahp` = breaks loop
+
 `br` = prints newline
 
 `clear` = clears output

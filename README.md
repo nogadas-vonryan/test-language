@@ -28,4 +28,4 @@ Example code [here](https://github.com/vrcxz/test-language/blob/main/guessing_ga
 
 `clear` = clears output
 
-`👏👏 code 👏👏👏` = defines a scope
+`👋👋 code 👋👋👋` = defines a scope

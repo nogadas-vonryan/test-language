@@ -28,4 +28,4 @@ Example code [here](https://github.com/vrcxz/test-language/blob/main/guessing_ga
 
 `br` = prints newline
 
-`clear` = clears output
+`clear` = clears prompt's output buffer
